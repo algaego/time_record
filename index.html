@@ -205,7 +205,7 @@
 
   function renderHome(){
     const dated = state.entries.filter(e=>e.hours.length); const uniqueDays=new Set(dated.map(e=>e.entry_date)).size; const total=dated.reduce((s,e)=>s+e.hours.length,0);
-    $('statMonthName').textContent=state.viewYear+'年'+state.viewMonth+'月已记录'; $('statDays').textContent=uniqueDays+' 天'; $('statTotal').textContent='总计 '+total+' 小时'; $('statDaysBar').style.width=Math.min(uniqueDays/31*100,100)+'%';
+    $('statMonthName').textContent='本月已记录'; $('statDays').textContent=uniqueDays+' 天'; $('statTotal').textContent='总计 '+total+' 小时'; $('statDaysBar').style.width=Math.min(uniqueDays/31*100,100)+'%';
     const ps=homeProjects(); [0,1].forEach(i=>{ const p=ps[i]; const prefix='statP'+(i+1); if(!p){ $(prefix+'Name').textContent='待选择'; $(prefix+'Hours').textContent='0 h'; $(prefix+'Days').textContent='设置中选择首页展示'; $(prefix+'Bar').style.width='0%'; return; } const st=projectStats(p); $(prefix+'Name').textContent=p.name; $(prefix+'Hours').textContent=st.hours+' h'; $(prefix+'Days').textContent='参与 '+st.days+' 天'; $(prefix+'Bar').style.width=Math.min(st.hours/60*100,100)+'%'; });
   }
 
